@@ -24,16 +24,30 @@ sigma = zeros(1, size(X, 2));
 %               each feature. 
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
-%       
+%    
 
 
+sizeX = size(X, 2);
+lengthX = length(X);
 
 
+for iterOne = 1:sizeX
+	sumX = sum(X(:,iterOne));
+	sigma(1,iterOne) = std(X(:,iterOne));
+	mu(1,iterOne) = mean(X(:,iterOne));
 
+	for iterTwo = 1:lengthX
+		X_norm(iterTwo,iterOne) = (X_norm(iterTwo,iterOne) - mu(1,iterOne))/ sigma(1,iterOne);
 
+	end
 
+%			X_norm(iterTwo,iterOne) = (X(iterTwo,iterOne) - avgVal)/ stdX;
 
+end
 
+% sigma
+%mu
+% X_norm
 % ============================================================
 
 end
