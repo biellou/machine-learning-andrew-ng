@@ -26,11 +26,31 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+% for i=1:K
+% 	sum = zeros(1,n);
+% 	numb_elements = 0;
+% 	for idx_count = 1:m
+% 		if (idx(idx_count) == i)
+% 			sum = sum + X(idx_count,:);
+% 			numb_elements = numb_elements + 1;
+% 		endif
+% 	end
+% 	numb_elements
+% 	centroids(i,:) = sum/numb_elements;
+% 
+% end
 
+% more elegant solution
 
+numb_elements = zeros(size(idx,1));
+for i=1:m
+	centroids(idx(i),:) = centroids(idx(i),:) + X(i,:);
+	numb_elements(idx(i)) = numb_elements(idx(i)) + 1;
+end
 
-
-
+for i = 1:K
+	centroids(i,:) = centroids(i,:)/numb_elements(i);
+end
 
 
 % =============================================================

@@ -21,7 +21,14 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for iter_X = 1:size(X,1)
+	distance = zeros(size(centroids, 1),1); % initialize distance matrix with zeros
+	for iter_centroids = 1:K
+		distance(iter_centroids) = sum( (X(iter_X,:) - centroids(iter_centroids,:)) .^2); 
+	end
+	[minval, row] = min(distance);
+	idx(iter_X) = row;
+end
 
 
 
